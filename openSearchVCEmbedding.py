@@ -7,13 +7,13 @@ import logging
 import numpy as np
 import boto3
 
-from langchain.llms.bedrock import Bedrock
-from langchain.embeddings.bedrock import BedrockEmbeddings
+
+from langchain_community.embeddings import BedrockEmbeddings  #failing to import. it says to update. THIS IS THE CORRECT AND MOST UP TO DATE IMPORT
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader, PyPDFDirectoryLoader
-from langchain.vectorstores import OpenSearchVectorSearch
+from langchain_community.vectorstores import OpenSearchVectorSearch
 from langchain.document_loaders import JSONLoader
-
+#FOR SOME STUPID REASON IMPORTS ARE NOT WORKING>
 logger = logging.getLogger()
 logging.basicConfig(format='%(asctime)s,%(module)s,%(processName)s,%(levelname)s,%(message)s', level=logging.INFO, stream=sys.stderr)
 
@@ -43,7 +43,7 @@ class EmbeddingBedrockOpenSearch:
     def __init__(self):
         self.bedrock_client = Clientmodules.createBedrockRuntimeClient()
         self.language_model = LanguageModel(self.bedrock_client)
-        self.llm = self.language_model.llm
+        self.llm = self.language_model.llm 
         self.embeddings = self.language_model.embeddings
         self.opensearch_domain_endpoint='https://search******puq.us-east-1.es.amazonaws.com'
         self.http_auth=('llm_vector','@l****orS1')

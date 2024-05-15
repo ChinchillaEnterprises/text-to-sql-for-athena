@@ -11,7 +11,7 @@ import io
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
-
+#this obviously isnt needed a
 
 class AthenaQueryExecute:
     def __init__(self):
